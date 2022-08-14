@@ -1,6 +1,11 @@
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hey GeekSI, you should hire me ;)");
+        Candidate JudeaDumont = new Candidate(9123L, "Judea Dumont");
 
+        Candidate.save(JudeaDumont);
+
+        for (Candidate person : Candidate.getCandidatesByName("Judea Dumont")) {
+            System.out.println("You want to hire " + person.getName());
+        }
     }
 }

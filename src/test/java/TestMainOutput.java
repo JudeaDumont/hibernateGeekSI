@@ -1,5 +1,6 @@
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+
 import org.junit.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -21,7 +22,7 @@ public class TestMainOutput {
     public void checkMainOutput() {
         String[] arguments = {"a", "b"};
         Main.main(arguments);
-        String expected = "Hey GeekSI, you should hire me ;)";
+        String expected = "You want to hire Judea Dumont";
 
         assertEquals(expected, outContent.toString().trim());
     }
