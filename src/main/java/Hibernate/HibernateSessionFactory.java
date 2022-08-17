@@ -1,3 +1,5 @@
+package Hibernate;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
@@ -18,11 +20,29 @@ public class HibernateSessionFactory {
             try {
                 hibernateSessionFactory = new MetadataSources(registry).buildMetadata().buildSessionFactory();
             } catch (Exception e) {
-                // The registry would be destroyed by the SessionFactory, but we had trouble building the SessionFactory
-                // so destroy it manually.
                 StandardServiceRegistryBuilder.destroy(registry);
             }
         }
         return hibernateSessionFactory.openSession();
+    }
+
+    // does not return an EnforcedClassExtension.ID of the thing you just saved
+    // you shouldn't need the id after saving the thing, you should need it before
+    public static <T> void save(T obj){
+        Session session = HibernateSessionFactory.getSession();
+        session.beginTransaction();
+        session.save(obj);
+        session.getTransaction().commit();
+        session.close();
+    }
+
+    public static <T> T getByClassAndID(Class<T> classOfObj, Long id) throws ClassNotFoundException {
+
+        Session session = HibernateSessionFactory.getSession();
+        session.beginTransaction();
+        T obj = session.get(classOfObj, id);
+        session.getTransaction().commit();
+        session.close();
+        return obj;
     }
 }

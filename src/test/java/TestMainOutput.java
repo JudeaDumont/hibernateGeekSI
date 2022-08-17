@@ -1,7 +1,7 @@
+import org.junit.jupiter.api.Test;
+
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-
-import org.junit.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -12,23 +12,15 @@ public class TestMainOutput {
     private final PrintStream previousOut = System.out;
     private final PrintStream previousErr = System.err;
 
-    @Before
-    public void setup() {
-        System.setOut(new PrintStream(outContent));
-        System.setErr(new PrintStream(errContent));
-    }
-
     @Test
     public void checkMainOutput() {
+        System.setOut(new PrintStream(outContent));
+        System.setErr(new PrintStream(errContent));
         String[] arguments = {"a", "b"};
         Main.main(arguments);
         String expected = "You want to hire Judea Dumont";
 
         assertEquals(expected, outContent.toString().trim());
-    }
-
-    @After
-    public void cleanUpStreams() {
         System.setOut(previousOut);
         System.setErr(previousErr);
     }

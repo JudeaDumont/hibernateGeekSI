@@ -1,11 +1,9 @@
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class Main {
+    private static final Logger logger = LogManager.getLogger(Main.class);
     public static void main(String[] args) {
-        Candidate JudeaDumont = new Candidate(9123L, "Judea Dumont");
-
-        Candidate.save(JudeaDumont);
-
-        for (Candidate person : Candidate.getCandidatesByName("Judea Dumont")) {
-            System.out.println("You want to hire " + person.getName());
-        }
+        logger.info("Hello, World!");
     }
 }
