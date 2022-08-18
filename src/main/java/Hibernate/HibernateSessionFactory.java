@@ -28,7 +28,7 @@ public class HibernateSessionFactory {
 
     // does not return an EnforcedClassExtension.ID of the thing you just saved
     // you shouldn't need the id after saving the thing, you should need it before
-    public static <T> void save(T obj){
+    public static <T> void save(T obj) {
         Session session = HibernateSessionFactory.getSession();
         session.beginTransaction();
         session.save(obj);

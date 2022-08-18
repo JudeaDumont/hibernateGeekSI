@@ -18,7 +18,7 @@ public class TestMainOutput {
         System.setErr(new PrintStream(errContent));
         String[] arguments = {"a", "b"};
         Main.main(arguments);
-        String expected = "You want to hire Judea Dumont";
+        String expected = "Hello, World!";
 
         assertEquals(expected, outContent.toString().trim());
         System.setOut(previousOut);

@@ -20,6 +20,6 @@ public class DBUTilsCandidate {
 
     private static <T extends ID> String getTableNameFromClass(Class<T> classOfObject) {
         String[] packageLocation = classOfObject.getName().split("\\.");
-        return packageLocation[packageLocation.length-1];
+        return packageLocation[packageLocation.length - 1];
     }
 }

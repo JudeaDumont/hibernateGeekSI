@@ -1,6 +1,8 @@
 import Candidate.Candidate;
 import Candidate.DBUTilsCandidate;
 import Hibernate.HibernateSessionFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -15,6 +17,7 @@ public class TestHibernateCandidates {
 
     private static Long id = null;
     private static Long testOrder = 0L;
+    private static final Logger logger = LogManager.getLogger(TestHibernateCandidates.class);
 
     @Test
     @Order(1)
@@ -22,7 +25,7 @@ public class TestHibernateCandidates {
         Candidate chef = new Candidate("chef");
         HibernateSessionFactory.save(chef);
         id = chef.getId();
-        System.out.println(++testOrder);
+        logger.info(++testOrder);
     }
 
     @Test
@@ -31,7 +34,7 @@ public class TestHibernateCandidates {
         Candidate retrieved = HibernateSessionFactory.
                 getByClassAndID(Candidate.class, id);
         assertEquals(retrieved.getName(), "chef");
-        System.out.println(++testOrder);
+        logger.info(++testOrder);
     }
 
     @Test
@@ -44,6 +47,6 @@ public class TestHibernateCandidates {
         for (Candidate person : candidatesByName) {
             System.out.println("You want to hire " + person.getName());
         }
-        System.out.println(++testOrder);
+        logger.info(++testOrder);
     }
 }
