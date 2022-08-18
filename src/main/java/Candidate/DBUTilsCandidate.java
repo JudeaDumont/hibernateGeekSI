@@ -1,25 +1,25 @@
 package Candidate;
 
+import EnforcedClassExtension.ID;
 import Hibernate.HibernateSessionFactory;
-import jakarta.persistence.criteria.CriteriaBuilder;
-import jakarta.persistence.criteria.CriteriaQuery;
-import jakarta.persistence.criteria.Root;
 import org.hibernate.Session;
+import org.hibernate.query.Query;
 
 import java.util.List;
 
 public class DBUTilsCandidate {
-    public static List<Candidate> getCandidatesByName(String name) {
+    public static <T extends ID> List<T> getByName(Class<T> classOfObject, String name) {
         Session session = HibernateSessionFactory.getSession();
+        session.beginTransaction();
 
-        CriteriaBuilder builder = session.getCriteriaBuilder();
+        Query<T> tQuery = session.createQuery(
+                "from " + getTableNameFromClass(classOfObject) + " c where c.name = '" + name + "'", classOfObject);
 
-        CriteriaQuery<Candidate> criteria = builder.createQuery(Candidate.class);
-        Root<Candidate> root = criteria.from(Candidate.class);
-        criteria.select(root);
-        criteria.where(builder.equal(root.get(Candidate_.name), name));
-        //problem is you have to rely on there being a property called name.
+        return tQuery.getResultList();
+    }
 
-        return session.createQuery(criteria).getResultList();
+    private static <T extends ID> String getTableNameFromClass(Class<T> classOfObject) {
+        String[] packageLocation = classOfObject.getName().split("\\.");
+        return packageLocation[packageLocation.length-1];
     }
 }

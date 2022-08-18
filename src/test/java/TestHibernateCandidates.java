@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
@@ -38,7 +40,8 @@ public class TestHibernateCandidates {
         Candidate judeaDumont = new Candidate(9123L, "Judea Dumont");
         HibernateSessionFactory.save(judeaDumont);
 
-        for (Candidate person : DBUTilsCandidate.getCandidatesByName("Judea Dumont")) {
+        List<Candidate> candidatesByName = DBUTilsCandidate.getByName(Candidate.class, "Judea Dumont");
+        for (Candidate person : candidatesByName) {
             System.out.println("You want to hire " + person.getName());
         }
         System.out.println(++testOrder);

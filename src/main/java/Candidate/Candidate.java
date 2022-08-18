@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
-@Table(name = "CANDIDATES")
+@Table
 public class Candidate implements ID {
     private Long id;
     private String name;
@@ -36,7 +36,7 @@ public class Candidate implements ID {
         this.id = id;
     }
 
-    @Column(name = "NAME")
+    @Column
     public String getName() {
         return name;
     }
