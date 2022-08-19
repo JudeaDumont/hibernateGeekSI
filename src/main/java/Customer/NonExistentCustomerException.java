@@ -2,6 +2,8 @@ package Customer;
 
 import java.io.Serial;
 
+//todo: get these exceptions to work, look for "Exception" in this project for the generic ones
+//that need to be changed to these
 public class NonExistentCustomerException extends NonExistentEntityException {
 
     @Serial

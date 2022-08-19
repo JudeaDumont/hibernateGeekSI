@@ -11,10 +11,11 @@ public class JdbcConnection {
 
     private static final Logger LOGGER =
         Logger.getLogger(JdbcConnection.class.getName());
+    //todo: remove optional pattern, I actually find it annoying and unnecessary
     private static Optional<Connection> connection = Optional.empty();
 
     public static Optional<Connection> getConnection() {
-        if (connection.isEmpty()) {
+        if (connection.isEmpty()) { //todo:hide credentials
             String url = "jdbc:postgresql://localhost:5432/sampleDB";
             String user = "postgres";
             String password = "root";

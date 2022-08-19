@@ -35,7 +35,7 @@ public class TestPostgreSqlDao {
         } catch (Exception ex) {
             LOGGER.log(Level.WARNING, ex.getMessage());
         }
-
+        //todo: refactor code that is used to retrieve out of postgresql and write asserts here
         // Test whether a customer can be added to the database
         Customer firstCustomer =
                 new Customer(2, "Manuel", "Kelley", "ManuelMKelley@jourrapide.com");

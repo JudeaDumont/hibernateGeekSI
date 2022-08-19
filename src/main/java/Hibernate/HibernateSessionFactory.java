@@ -31,6 +31,7 @@ public class HibernateSessionFactory {
     public static <T> void save(T obj) {
         Session session = HibernateSessionFactory.getSession();
         session.beginTransaction();
+        //todo: figure out what the non-deprecated version of this is in hibernate docs
         session.save(obj);
         session.getTransaction().commit();
         session.close();

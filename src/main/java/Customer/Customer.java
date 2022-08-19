@@ -1,5 +1,6 @@
 package Customer;
 
+//todo: refactor this into candidate for postgresql, will also need to create the table
 public class Customer {
     private Integer id;
     private String firstName;

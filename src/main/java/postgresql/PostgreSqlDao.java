@@ -19,7 +19,7 @@ public class PostgreSqlDao implements Dao<Customer, Integer> {
     public PostgreSqlDao() {
         this.connection = JdbcConnection.getConnection();
     }
-
+    //todo: change customer to candidate and seperate out candidate specific code here
     @Override
     public Optional<Customer> get(int id) {
         return connection.flatMap(conn -> {
