@@ -1,8 +1,8 @@
-package Customer;
+package Candidate.Exceptions;
 
 import java.io.Serial;
-//doesn't work
-public class NonExistentEntityException extends Throwable {
+
+public class NonExistentEntityException extends Exception {
 
     @Serial
     private static final long serialVersionUID = -3760558819369784286L;

@@ -1,6 +1,5 @@
 import Candidate.Candidate;
-import Candidate.DBUTilsCandidate;
-import Hibernate.HibernateSessionFactory;
+import HibernateInMemory.HibernateInMemorySessionFactory;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.MethodOrderer;
@@ -23,7 +22,7 @@ public class TestHibernateCandidates {
     @Order(1)
     public void testSave() throws ClassNotFoundException {
         Candidate chef = new Candidate("chef");
-        HibernateSessionFactory.save(chef);
+        HibernateInMemorySessionFactory.save(chef);
         id = chef.getId();
         logger.info(++testOrder);
     }
@@ -31,7 +30,7 @@ public class TestHibernateCandidates {
     @Test
     @Order(2)
     public void testGet() throws ClassNotFoundException {
-        Candidate retrieved = HibernateSessionFactory.
+        Candidate retrieved = HibernateInMemorySessionFactory.
                 getByClassAndID(Candidate.class, id);
         assertEquals(retrieved.getName(), "chef");
         logger.info(++testOrder);
@@ -41,9 +40,9 @@ public class TestHibernateCandidates {
     @Order(3)
     public void testCandidatesByName() {
         Candidate judeaDumont = new Candidate(9123L, "Judea Dumont");
-        HibernateSessionFactory.save(judeaDumont);
+        HibernateInMemorySessionFactory.save(judeaDumont);
 
-        List<Candidate> candidatesByName = DBUTilsCandidate.getByName(Candidate.class, "Judea Dumont");
+        List<Candidate> candidatesByName = HibernateInMemorySessionFactory.getByName(Candidate.class, "Judea Dumont");
         for (Candidate person : candidatesByName) {
             System.out.println("You want to hire " + person.getName());
         }

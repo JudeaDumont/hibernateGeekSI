@@ -32,7 +32,7 @@ public class Candidate implements ID {
         return id;
     }
 
-    private void setId(Long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -41,7 +41,7 @@ public class Candidate implements ID {
         return name;
     }
 
-    private void setname(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 }
