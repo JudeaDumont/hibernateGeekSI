@@ -1,6 +1,6 @@
-package Candidate;
+package Data.Candidate;
 
-import EnforcedClassExtension.ID;
+import Data.EnforcedClassExtension.ID;
 import jakarta.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
 

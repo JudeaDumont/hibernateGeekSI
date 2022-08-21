@@ -1,7 +1,9 @@
-import Candidate.Candidate;
-import Candidate.Exceptions.NonExistentCandidateException;
-import Postgresql.Dao;
-import Postgresql.PostgreSqlCandidateDao;
+package PersistentDataTests;
+
+import Data.Candidate.Candidate;
+import Data.Candidate.Exceptions.NonExistentCandidateException;
+import Data.Postgresql.Dao;
+import Data.Postgresql.PostgreSqlCandidateDao;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;

@@ -1,6 +1,6 @@
-package HibernateInMemory;
+package Data.HibernateInMemory;
 
-import EnforcedClassExtension.ID;
+import Data.EnforcedClassExtension.ID;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;

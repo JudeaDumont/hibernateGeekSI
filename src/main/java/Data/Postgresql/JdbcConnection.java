@@ -1,4 +1,4 @@
-package Postgresql;
+package Data.Postgresql;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

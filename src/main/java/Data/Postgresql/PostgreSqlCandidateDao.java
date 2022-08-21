@@ -1,6 +1,6 @@
-package Postgresql;
+package Data.Postgresql;
 
-import Candidate.Candidate;
+import Data.Candidate.Candidate;
 
 import java.sql.*;
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package Candidate.Exceptions;
+package Data.Candidate.Exceptions;
 
 import java.io.Serial;
 
